@@ -1,3 +1,14 @@
+## Notice
+
+Use this repository to access pull request features from others before they are officially released.
+
+now it merged:
+
+- no interactive mode @nthings
+
+see [Contributing](CONTRIBUTING.md) for usage.
+
+## AI Commits
 <div align="center">
   <div>
     <img src=".github/screenshot.png" alt="AI Commits"/>
