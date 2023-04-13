@@ -18,6 +18,7 @@ export default async (
 	generate: number | undefined,
 	excludeFiles: string[],
 	stageAll: boolean,
+	noninteractive: boolean | undefined,
 	rawArgv: string[],
 ) => (async () => {
 	intro(bgCyan(black(' aicommits ')));
@@ -72,19 +73,19 @@ export default async (
 	let message: string;
 	if (messages.length === 1) {
 		[message] = messages;
-		const confirmed = await confirm({
-			message: `Use this commit message?\n\n   ${message}\n`,
-		});
+		const confirmed = noninteractive ? true : await confirm({ message: `Use this commit message?\n\n   ${message}\n` });
 
 		if (!confirmed || isCancel(confirmed)) {
 			outro('Commit cancelled');
 			return;
 		}
 	} else {
-		const selected = await select({
-			message: `Pick a commit message to use: ${dim('(Ctrl+c to exit)')}`,
-			options: messages.map(value => ({ label: value, value })),
-		});
+		const selected = noninteractive
+			? messages[0]
+			: await select({
+				message: `Pick a commit message to use: ${dim('(Ctrl+c to exit)')}`,
+				options: messages.map(value => ({ label: value, value })),
+			});
 
 		if (isCancel(selected)) {
 			outro('Commit cancelled');

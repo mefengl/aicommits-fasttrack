@@ -35,6 +35,11 @@ cli(
 				alias: 'a',
 				default: false,
 			},
+			noninteractive: {
+				type: Boolean,
+				description: 'Non interactive mode',
+				alias: 'y',
+			},
 		},
 
 		commands: [
@@ -56,6 +61,7 @@ cli(
 				argv.flags.generate,
 				argv.flags.exclude,
 				argv.flags.all,
+				argv.flags.noninteractive,
 				rawArgv,
 			);
 		}
