@@ -5,6 +5,7 @@ Use this repository to access pull request features from others before they are 
 now it merged:
 
 - no interactive mode @nthings
+- `--prefix` @aslakhol
 
 see [Contributing](CONTRIBUTING.md) for usage.
 
