@@ -40,6 +40,11 @@ cli(
 				description: 'Non interactive mode',
 				alias: 'y',
 			},
+			prefix: {
+				type: String,
+				description: 'String to prefix to the generated commit message.',
+				default: '',
+			},
 		},
 
 		commands: [
@@ -62,6 +67,7 @@ cli(
 				argv.flags.exclude,
 				argv.flags.all,
 				argv.flags.noninteractive,
+				argv.flags.prefix,
 				rawArgv,
 			);
 		}

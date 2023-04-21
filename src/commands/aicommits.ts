@@ -19,6 +19,7 @@ export default async (
 	excludeFiles: string[],
 	stageAll: boolean,
 	noninteractive: boolean | undefined,
+  prefix: string,
 	rawArgv: string[],
 ) => (async () => {
 	intro(bgCyan(black(' aicommits ')));
@@ -73,6 +74,8 @@ export default async (
 	let message: string;
 	if (messages.length === 1) {
 		[message] = messages;
+		message = `${prefix} ${message}`;
+
 		const confirmed = noninteractive ? true : await confirm({ message: `Use this commit message?\n\n   ${message}\n` });
 
 		if (!confirmed || isCancel(confirmed)) {
